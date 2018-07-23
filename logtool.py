@@ -1,11 +1,10 @@
 #!/usr/bin/env python2
 import psycopg2
+import calendar
 
 DBNAME = "news"
 db = psycopg2.connect(database=DBNAME)
 c = db.cursor()
-m = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August',
-     'September', 'October', 'November', 'December']
 
 
 # Get the Top Three most viewed Articles of all time.
@@ -50,7 +49,7 @@ def getError():
     print "\n  Which Day have error more than 1% \n " + '=' * 35
     for pos in posts:
         x = str(pos[0]).split('-')
-        month = '  ' + m[int(x[1])]
+        month = '  ' + calendar.month_name[int(x[1])]
         day = ' ' + x[2] + ','
         year = ' ' + x[0]
         percent = str(pos[1])
