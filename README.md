@@ -4,8 +4,11 @@ This tool will help you to print out a report (in plain text) based on the data 
 
 ## Requirments
 python version 2.7 ( Can be download from [here](https://www.python.org/downloads/))
+
 psycopg2 module ( Can be download from [here](http://initd.org/psycopg/))
+
 DataBase ( named **news** ) includes three tables:
+
 * **Author** table includes information about the authors of articles
  ```
  name (type: text) not null
@@ -14,6 +17,7 @@ DataBase ( named **news** ) includes three tables:
  ```
 Indexes:
 "authors_pkey" PRIMARY KEY, btree (id)
+
 Referenced by: ( TABLE "articles" CONSTRAINT "articles_author_fkey" FOREIGN KEY (author) REFERENCES authors(id) )
 
 * **Articles** table includes the articles themselves.
@@ -28,7 +32,9 @@ Referenced by: ( TABLE "articles" CONSTRAINT "articles_author_fkey" FOREIGN KEY 
  ```
 Indexes:
  "articles_pkey" PRIMARY KEY, btree (id)
+
  "articles_slug_key" UNIQUE CONSTRAINT, btree (slug)
+ 
 Foreign-key constraints:
  "articles_author_fkey" FOREIGN KEY (author) REFERENCES authors(id) 
 
